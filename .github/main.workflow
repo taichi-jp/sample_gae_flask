@@ -3,6 +3,11 @@ workflow "First workflow" {
   resolves = ["test-action"]
 }
 
+action "is-master-branch?" {
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
 action "test-action" {
   uses = "./action_test"
 }
