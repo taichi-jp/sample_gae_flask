@@ -9,5 +9,5 @@ action "is-master-branch?" {
 }
 
 action "test-action" {
-  uses = "./action_test"
+  uses = "./actions/action_test"
 }
