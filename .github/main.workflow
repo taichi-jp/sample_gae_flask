@@ -1,8 +1,8 @@
 workflow "First workflow" {
   on = "push"
-  resolves = ["new-action"]
+  resolves = ["test-action"]
 }
 
-action "test" {
+action "test-action" {
   uses = "./action_test"
 }
