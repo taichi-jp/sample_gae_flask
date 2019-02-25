@@ -16,7 +16,7 @@
 'use strict';
 
 window.addEventListener('load', function () {
-  
+
   // [START gae_python37_auth_signout]
   document.getElementById('sign-out').onclick = function () {
     firebase.auth().signOut();

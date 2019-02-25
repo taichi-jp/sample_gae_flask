@@ -1,15 +1,23 @@
 <!doctype html>
 <html>
+
 <head>
   <title>Datastore and Firebase Auth Example</title>
 
   <!-- See https://github.com/firebase/firebaseui-web. -->
-  <!-- [START gae_python37_auth_init_firebase] -->
-  <!-- *******************************************************************************************
-       * TODO(DEVELOPER): Paste the initialization snippet from:
-       * http://console.firebase.google.com > Overview > Add Firebase to your web app.
-       ***************************************************************************************** -->
-  <!-- [END gae_python37_auth_init_firebase] -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB0ysNoKZjPV2ouXZm4tTKfR_Hq1RcuHCM",
+      authDomain: "sample-gae-flask.firebaseapp.com",
+      databaseURL: "https://sample-gae-flask.firebaseio.com",
+      projectId: "sample-gae-flask",
+      storageBucket: "sample-gae-flask.appspot.com",
+      messagingSenderId: "953120176799"
+    };
+    firebase.initializeApp(config);
+  </script>
   <script>
     if (typeof firebase === 'undefined') {
       const msg = "Please paste the Firebase initialization snippet into index.html. See https://console.firebase.google.com > Overview > Add Firebase to your web app.";
@@ -25,30 +33,35 @@
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
+
 <body>
 
-<h1>Datastore and Firebase Auth Example</h1>
+  <h1>Datastore and Firebase Auth Example</h1>
 
-<!-- [START gae_python37_auth_firebase_html] -->
-<div id="firebaseui-auth-container"></div>
+  <!-- [START gae_python37_auth_firebase_html] -->
+  <div id="firebaseui-auth-container"></div>
 
-<button id="sign-out" hidden=true>Sign Out</button>
+  <button id="sign-out" hidden=true>Sign Out</button>
 
-<div id="login-info" hidden=true>
-  <h2>Login info:</h2>
-  {% if user_data %}
+  <div id="login-info" hidden=true>
+    <h2>Login info:</h2>
+    {% if user_data %}
     <dl>
-      <dt>Name</dt><dd>{{ user_data['name'] }}</dd>
-      <dt>Email</dt><dd>{{ user_data['email'] }}</dd>
-      <dt>Last 10 visits</dt><dd>
-	{% for time in times %}
-          <p>{{ time['timestamp'] }}</p>
+      <dt>Name</dt>
+      <dd>{{ user_data['name'] }}</dd>
+      <dt>Email</dt>
+      <dd>{{ user_data['email'] }}</dd>
+      <dt>Last 10 visits</dt>
+      <dd>
+        {% for time in times %}
+        <p>{{ time['timestamp'] }}</p>
         {% endfor %} </dd>
     </dl>
-  {% elif error_message %}
+    {% elif error_message %}
     <p>Error: {{ error_message }}</p>
-  {% endif %}
-</div>
-<!-- [END gae_python37_auth_firebase_html] -->
+    {% endif %}
+  </div>
+  <!-- [END gae_python37_auth_firebase_html] -->
 </body>
+
 </html>
